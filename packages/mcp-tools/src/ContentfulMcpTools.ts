@@ -1,17 +1,12 @@
 import type { ContentfulConfig } from './config/types.js';
-import { createAiActionTools } from './tools/ai-actions/register.js';
 import { createAssetTools } from './tools/assets/register.js';
 import { createContentTypeTools } from './tools/content-types/register.js';
 import { createContextTools } from './tools/context/register.js';
-import { createEditorInterfaceTools } from './tools/editor-interfaces/register.js';
 import { createEntryTools } from './tools/entries/register.js';
 import { createEnvironmentTools } from './tools/environments/register.js';
 import { createLocaleTools } from './tools/locales/register.js';
-import { createOrgTools } from './tools/orgs/register.js';
 import { createSpaceTools } from './tools/spaces/register.js';
 import { createTagTools } from './tools/tags/register.js';
-import { createTaxonomyTools } from './tools/taxonomies/register.js';
-import { createJobTools } from './tools/jobs/space-to-space-migration/register.js';
 
 /**
  * Main class for Contentful MCP Tools
@@ -42,13 +37,6 @@ export class ContentfulMcpTools {
   }
 
   /**
-   * Get AI action tools
-   */
-  getAiActionTools() {
-    return createAiActionTools(this.config);
-  }
-
-  /**
    * Get asset tools
    */
   getAssetTools() {
@@ -67,13 +55,6 @@ export class ContentfulMcpTools {
    */
   getContextTools() {
     return createContextTools(this.config);
-  }
-
-  /**
-   * Get editor interface tools
-   */
-  getEditorInterfaceTools() {
-    return createEditorInterfaceTools(this.config);
   }
 
   /**
@@ -98,13 +79,6 @@ export class ContentfulMcpTools {
   }
 
   /**
-   * Get organization tools
-   */
-  getOrgTools() {
-    return createOrgTools(this.config);
-  }
-
-  /**
    * Get space tools
    */
   getSpaceTools() {
@@ -116,20 +90,6 @@ export class ContentfulMcpTools {
    */
   getTagTools() {
     return createTagTools(this.config);
-  }
-
-  /**
-   * Get taxonomy tools
-   */
-  getTaxonomyTools() {
-    return createTaxonomyTools(this.config);
-  }
-
-  /**
-   * Get job tools (space-to-space migration)
-   */
-  getJobTools() {
-    return createJobTools(this.config);
   }
 }
 

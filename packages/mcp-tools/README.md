@@ -56,18 +56,14 @@ Object.values(assetTools).forEach((toolConfig) => {
 
 ```typescript
 import {
-  aiActionTools, // AI action management
   assetTools, // Asset operations
   contentTypeTools, // Content type management
   contextTools, // Initial context setup
   entryTools, // Entry operations
   environmentTools, // Environment management
-  jobTools, // Long-running jobs
   localeTools, // Locale management
-  orgTools, // Organization operations
   spaceTools, // Space operations
   tagTools, // Tag management
-  taxonomyTools, // Taxonomy/concept scheme operations
 } from '@contentful/mcp-tools';
 ```
 
@@ -89,63 +85,29 @@ Each tool includes semantic annotations to help MCP clients understand tool beha
 |                           | `get_content_type`                 | Get detailed content type information            |
 |                           | `create_content_type`              | Create new content types                         |
 |                           | `update_content_type`              | Modify existing content types                    |
-|                           | `publish_content_type`             | Publish content type changes                     |
-|                           | `unpublish_content_type`           | Unpublish content types                          |
-|                           | `delete_content_type`              | Remove content types                             |
 | **Entries**               | `search_entries`                   | Search and filter entries in your space          |
 |                           | `get_entry`                        | Retrieve specific entries                        |
 |                           | `create_entry`                     | Create new content entries with locale support   |
 |                           | `update_entry`                     | Modify existing entries with locale support      |
 |                           | `publish_entry`                    | Publish entries (single or bulk up to 100)       |
-|                           | `unpublish_entry`                  | Unpublish entries (single or bulk up to 100)     |
-|                           | `delete_entry`                     | Remove entries                                   |
-| **Editor Interfaces**     | `list_editor_interfaces`           | List all editor interfaces in a space            |
-|                           | `get_editor_interface`             | Get editor interface for a content type          |
-|                           | `update_editor_interface`          | Update field controls, sidebars, and layouts     |
+|                           | `archive_entry`                    | Archive entries (single or bulk up to 100)       |
+|                           | `unarchive_entry`                  | Unarchive entries (single or bulk up to 100)     |
 | **Assets**                | `upload_asset`                     | Upload new assets                                |
 |                           | `list_assets`                      | List and browse assets (max 3 per request)       |
 |                           | `get_asset`                        | Retrieve specific assets                         |
 |                           | `update_asset`                     | Modify asset metadata                            |
 |                           | `publish_asset`                    | Publish assets (single or bulk up to 100)        |
-|                           | `unpublish_asset`                  | Unpublish assets (single or bulk up to 100)      |
-|                           | `delete_asset`                     | Remove assets                                    |
+|                           | `archive_asset`                    | Archive assets (single or bulk up to 100)        |
+|                           | `unarchive_asset`                  | Unarchive assets (single or bulk up to 100)      |
 | **Spaces & Environments** | `list_spaces`                      | List available spaces (max 10 per request)       |
 |                           | `get_space`                        | Get space details                                |
 |                           | `list_environments`                | List environments in a space                     |
-|                           | `create_environment`               | Create new environments                          |
-|                           | `delete_environment`               | Remove environments                              |
 | **Locales**               | `list_locales`                     | List all locales in your environment             |
 |                           | `get_locale`                       | Retrieve specific locale information             |
 |                           | `create_locale`                    | Create new locales for multi-language content    |
 |                           | `update_locale`                    | Modify existing locale settings                  |
-|                           | `delete_locale`                    | Remove locales from environment                  |
 | **Tags**                  | `list_tags`                        | List all tags in an environment                  |
 |                           | `create_tag`                       | Create new tags with public/private visibility   |
-| **Organizations**         | `list_orgs`                        | List organizations user has access to            |
-|                           | `get_org`                          | Get details of a specific organization           |
-| **AI Actions**            | `create_ai_action`                 | Create custom AI-powered workflows               |
-|                           | `invoke_ai_action`                 | Invoke AI action with variables (bulk support)   |
-|                           | `get_ai_action_invocation`         | Get AI action invocation details                 |
-|                           | `get_ai_action`                    | Retrieve AI action details and configuration     |
-|                           | `list_ai_actions`                  | List AI actions in a space (max 3 per request)   |
-|                           | `update_ai_action`                 | Update existing AI actions                       |
-|                           | `publish_ai_action`                | Publish AI actions for use                       |
-|                           | `unpublish_ai_action`              | Unpublish AI actions                             |
-|                           | `delete_ai_action`                 | Remove AI actions                                |
-| **Taxonomy Concepts**     | `create_concept`                   | Create new taxonomy concepts with localization   |
-|                           | `get_concept`                      | Retrieve specific taxonomy concept               |
-|                           | `list_concepts`                    | List concepts with filtering and hierarchy       |
-|                           | `update_concept`                   | Update taxonomy concept properties               |
-|                           | `delete_concept`                   | Remove taxonomy concepts                         |
-| **Taxonomy Schemes**      | `create_concept_scheme`            | Create new taxonomy concept schemes              |
-|                           | `get_concept_scheme`               | Retrieve specific concept scheme                 |
-|                           | `list_concept_schemes`             | List concept schemes with pagination             |
-|                           | `update_concept_scheme`            | Update concept scheme properties                 |
-|                           | `delete_concept_scheme`            | Remove concept schemes                           |
-| **Space Migration**       | `space_to_space_migration_handler` | Enable/disable space migration workflow          |
-|                           | `space_to_space_param_collection`  | Collect parameters for migration workflow        |
-|                           | `export_space`                     | Export space to file for migration               |
-|                           | `import_space`                     | Import space from exported file                  |
 
 ## Configuration
 
