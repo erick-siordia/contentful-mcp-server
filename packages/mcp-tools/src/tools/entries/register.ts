@@ -1,13 +1,8 @@
 import { searchEntriesTool, SearchEntriesToolParams } from './searchEntries.js';
 import { createEntryTool, CreateEntryToolParams } from './createEntry.js';
-import { deleteEntryTool, DeleteEntryToolParams } from './deleteEntry.js';
 import { updateEntryTool, UpdateEntryToolParams } from './updateEntry.js';
 import { getEntryTool, GetEntryToolParams } from './getEntry.js';
 import { publishEntryTool, PublishEntryToolParams } from './publishEntry.js';
-import {
-  unpublishEntryTool,
-  UnpublishEntryToolParams,
-} from './unpublishEntry.js';
 import { archiveEntryTool, ArchiveEntryToolParams } from './archiveEntry.js';
 import {
   unarchiveEntryTool,
@@ -18,11 +13,9 @@ import type { ContentfulConfig } from '../../config/types.js';
 export function createEntryTools(config: ContentfulConfig) {
   const searchEntries = searchEntriesTool(config);
   const createEntry = createEntryTool(config);
-  const deleteEntry = deleteEntryTool(config);
   const updateEntry = updateEntryTool(config);
   const getEntry = getEntryTool(config);
   const publishEntry = publishEntryTool(config);
-  const unpublishEntry = unpublishEntryTool(config);
   const archiveEntry = archiveEntryTool(config);
   const unarchiveEntry = unarchiveEntryTool(config);
 
@@ -73,18 +66,6 @@ export function createEntryTools(config: ContentfulConfig) {
       },
       tool: updateEntry,
     },
-    deleteEntry: {
-      title: 'delete_entry',
-      description: 'Delete a specific content entry from your Contentful space',
-      inputParams: DeleteEntryToolParams.shape,
-      annotations: {
-        readOnlyHint: false,
-        destructiveHint: true,
-        idempotentHint: true,
-        openWorldHint: false,
-      },
-      tool: deleteEntry,
-    },
     publishEntry: {
       title: 'publish_entry',
       description:
@@ -97,19 +78,6 @@ export function createEntryTools(config: ContentfulConfig) {
         openWorldHint: false,
       },
       tool: publishEntry,
-    },
-    unpublishEntry: {
-      title: 'unpublish_entry',
-      description:
-        'Unpublish an entry or multiple entries. Accepts either a single entryId (string) or an array of entryIds (up to 100 entries). For a single entry, it uses the standard unpublish operation. For multiple entries, it automatically uses bulk unpublishing.',
-      inputParams: UnpublishEntryToolParams.shape,
-      annotations: {
-        readOnlyHint: false,
-        destructiveHint: false,
-        idempotentHint: true,
-        openWorldHint: false,
-      },
-      tool: unpublishEntry,
     },
     archiveEntry: {
       title: 'archive_entry',

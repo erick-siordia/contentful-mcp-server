@@ -2,12 +2,7 @@ import { uploadAssetTool, UploadAssetToolParams } from './uploadAsset.js';
 import { listAssetsTool, ListAssetsToolParams } from './listAssets.js';
 import { getAssetTool, GetAssetToolParams } from './getAsset.js';
 import { updateAssetTool, UpdateAssetToolParams } from './updateAsset.js';
-import { deleteAssetTool, DeleteAssetToolParams } from './deleteAsset.js';
 import { publishAssetTool, PublishAssetToolParams } from './publishAsset.js';
-import {
-  unpublishAssetTool,
-  UnpublishAssetToolParams,
-} from './unpublishAsset.js';
 import { archiveAssetTool, ArchiveAssetToolParams } from './archiveAsset.js';
 import {
   unarchiveAssetTool,
@@ -20,9 +15,7 @@ export function createAssetTools(config: ContentfulConfig) {
   const listAssets = listAssetsTool(config);
   const getAsset = getAssetTool(config);
   const updateAsset = updateAssetTool(config);
-  const deleteAsset = deleteAssetTool(config);
   const publishAsset = publishAssetTool(config);
-  const unpublishAsset = unpublishAssetTool(config);
   const archiveAsset = archiveAssetTool(config);
   const unarchiveAsset = unarchiveAssetTool(config);
 
@@ -72,18 +65,6 @@ export function createAssetTools(config: ContentfulConfig) {
       },
       tool: updateAsset,
     },
-    deleteAsset: {
-      title: 'delete_asset',
-      description: 'Delete an asset',
-      inputParams: DeleteAssetToolParams.shape,
-      annotations: {
-        readOnlyHint: false,
-        destructiveHint: true,
-        idempotentHint: true,
-        openWorldHint: false,
-      },
-      tool: deleteAsset,
-    },
     publishAsset: {
       title: 'publish_asset',
       description:
@@ -96,19 +77,6 @@ export function createAssetTools(config: ContentfulConfig) {
         openWorldHint: false,
       },
       tool: publishAsset,
-    },
-    unpublishAsset: {
-      title: 'unpublish_asset',
-      description:
-        'Unpublish an asset or multiple assets. Accepts either a single assetId (string) or an array of assetIds (up to 100 assets). For a single asset, it uses the standard unpublish operation. For multiple assets, it automatically uses bulk unpublishing.',
-      inputParams: UnpublishAssetToolParams.shape,
-      annotations: {
-        readOnlyHint: false,
-        destructiveHint: false,
-        idempotentHint: true,
-        openWorldHint: false,
-      },
-      tool: unpublishAsset,
     },
     archiveAsset: {
       title: 'archive_asset',

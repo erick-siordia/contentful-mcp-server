@@ -2,7 +2,6 @@ import { getLocaleTool, GetLocaleToolParams } from './getLocale.js';
 import { createLocaleTool, CreateLocaleToolParams } from './createLocale.js';
 import { listLocaleTool, ListLocaleToolParams } from './listLocales.js';
 import { updateLocaleTool, UpdateLocaleToolParams } from './updateLocale.js';
-import { deleteLocaleTool, DeleteLocaleToolParams } from './deleteLocale.js';
 import type { ContentfulConfig } from '../../config/types.js';
 
 export function createLocaleTools(config: ContentfulConfig) {
@@ -10,7 +9,6 @@ export function createLocaleTools(config: ContentfulConfig) {
   const createLocale = createLocaleTool(config);
   const listLocales = listLocaleTool(config);
   const updateLocale = updateLocaleTool(config);
-  const deleteLocale = deleteLocaleTool(config);
 
   return {
     getLocale: {
@@ -59,19 +57,6 @@ export function createLocaleTools(config: ContentfulConfig) {
         openWorldHint: false,
       },
       tool: updateLocale,
-    },
-    deleteLocale: {
-      title: 'delete_locale',
-      description:
-        'Delete a specific locale from your Contentful environment. This operation permanently removes the locale and cannot be undone.',
-      inputParams: DeleteLocaleToolParams.shape,
-      annotations: {
-        readOnlyHint: false,
-        destructiveHint: true,
-        idempotentHint: true,
-        openWorldHint: false,
-      },
-      tool: deleteLocale,
     },
   };
 }
